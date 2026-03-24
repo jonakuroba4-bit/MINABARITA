@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <title>MINABARITA</title>
-
   <link rel="stylesheet" href="https://unpkg.com/potree/build/potree/potree.css">
-
   <style>
     html, body {
       margin: 0;
@@ -19,27 +16,24 @@
       height: 100%;
     }
   </style>
-
 </head>
-
 <body>
   <div id="potree_render_area"></div>
 
   <script src="https://unpkg.com/potree/build/potree/potree.js"></script>
 
   <script>
-    window.viewer = new Potree.Viewer(document.getElementById("potree_render_area"));
+    const viewer = new Potree.Viewer(document.getElementById("potree_render_area"));
 
     viewer.setEDLEnabled(true);
     viewer.setFOV(60);
     viewer.setPointBudget(1000000);
 
-    Potree.loadPointCloud("SUPERIOR/metadata.json", "SUPERIOR", function(e) {
+    Potree.loadPointCloud("SUPERIOR/metadata.json", "superior", function(e) {
       const pointcloud = e.pointcloud;
       viewer.scene.addPointCloud(pointcloud);
       viewer.fitToScreen();
     });
   </script>
-
 </body>
 </html>
